@@ -2,7 +2,7 @@
 </script>
 
 <template>
-  <RouterView />
+  <div>主页</div>
 </template>
 
 <style scoped>

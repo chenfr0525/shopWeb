@@ -23,4 +23,11 @@ export default [
 
   js.configs.recommended,
   ...pluginVue.configs['flat/essential'],
+   // 自定义规则
+   {
+    rules: {
+      // 取消对组件命名的强制要求
+      'vue/multi-word-component-names': 'off',
+    },
+  },
 ]
