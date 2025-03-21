@@ -3,7 +3,7 @@
 </script>
 
 <template>
-  <el-button>Default</el-button>
+  <el-button type="primary">Default</el-button>
   
 </template>
 
