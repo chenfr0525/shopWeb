@@ -1,55 +1,122 @@
-1.删除不需要的文件，比如components中的示例文件。创建所需文件：api，composables，directives，styles，utils
-2.安装element组建（按需导入）
-3.定制主题色
- -安装scss npm i sass -D
- -准备定制样式文件 styles/element/index.scss
- -对ElementPlus样式进行覆盖 通知Element采用scss语言->导入定制scss文件覆盖（修改vits.config.js）
-4.axios基础配置
- -安装axios npm i axios
- -配置基础实例（统一接口配置）utils/request.js
-5.路由设置
-路由设计原则：找内容切换区域，如果是页面整体切换，则为一级路由;找内容切换的区域，如果是在一级路由的内部切换，则为二级路由
-6.Eslint配置（单个单词文件报错）
-7.自动导入组件共享色值var.scss
- -新增var.scss文件，用于存放共享色值
- -通过vite.config.js配置自动导入共享色值
-8.引入字体图标库
-9.获取滚动距离vueuse
--下载npm i @vueuse/core
--使用动态类名<div :class={show:y>78}></div
-10.指令封装
- -通过插件的方法把指令封装为插件
- -在main.js中注册指令
-11.业务逻辑封装
--函数use打头，内部封装逻辑，return组件需要用到的数据和方法给组件消费（在category组件使用）
-export function useCategory() {
-  //业务逻辑
-  return {
-    //数据+方法
-  }
-}
-12.列表无限加载功能实现
- -使用elementPlus提供的v-infinite-scroll指令监听是否满足触底条件，满足加载条件时让页数参数加一获取下一页数据，做新老数据的拼接
-13.定制路由行为：在不同路由切换的时候，可以自动滚动到页面的顶部，而不是停留在原先的位置
- -vue-router的scrollBehavior配置项,可以指定路由切换时的滚动位置
- -scrollBehavior(){
-  return{top:0}
- }
- 14.报错误：good一开始{}  {}.categories=>undefined=>undefined[]
-  - 1.可选链的语法 ?.
-  - 2.v-if手动控制渲染实际 保证只有数据存在才渲染
-15.放大镜效果实现-滑块跟随鼠标移动
- -思路：获取到当前的鼠标在盒子内的相对位置(useMouseInElement),控制滑块跟随鼠标移动(left/top) 
-16.SKU组件使用
- - 熟悉第三方组件，重点关注props(决定组件接收什么数据),emit(决定会产出什么数据)
-17.form表单自定义校验规则
- {
-  validator:(rule,value,callback)=>{
-    //自定义校验逻辑
-    //value:当前输入的数据
-    //callback:校验成功调用callback(),失败调用callback(new Error('错误信息'))
-  }
- }
- 18.时间格式化插件dayjs
- npm i dayjs
- import dayjs from 'dayjs'
+# 🐇 小兔鲜 - Vue3 电商平台
+
+进阶学习Vue3项目，跟随B站视频做的电商项目。
+
+一个基于 Vue3 的现代化生鲜电商平台，实现了完整的电商核心功能流程。
+
+## 页面展示
+
+#### 登录页
+
+![登录页](public/images/login.png)
+
+#### 首页
+
+![首页](public/images/home1.png)
+
+![首页](public/images/home2.png)
+
+![首页](public/images/home3.png)
+
+![首页](public/images/category.png)
+
+
+#### 商品详情页
+
+![商品详情页](public/images/detail.png)
+
+![商品详情页](public/images/detail2.png)
+
+#### 购物车
+
+![购物车](public/images/cart.png)
+
+#### 结算页
+
+![结算页](public/images/total.png)
+
+![结算页](public/images/total2.png)
+
+
+## 🚀 项目特色
+
+- 采用 Vue3 Composition API + Pinia 状态管理
+- 使用 Vue Router 实现动态路由和权限控制
+- 基于 VueUse 的组件化和工具库
+- 完整的电商功能：商品展示、购物车、订单结算、支付流程等
+- PC端
+- 采用 Axios 封装的前后端数据交互
+
+## 📦 技术栈
+
+**核心框架**  
+- Vue 3.4+  
+- Pinia 2.1+  
+- Vue Router 4.2+  
+
+**辅助工具**  
+- Axios 1.5+  
+- VueUse 10.0+  
+- ESLint
+
+**构建工具**  
+- Vite 5.0+  
+
+## 🛠️ 项目结构
+
+```bash
+src/
+├── api/               # API请求封装
+├── assets/            # 静态资源
+├── components/        # 公共组件
+├── composables/       # 组合式函数
+├── router/            # 路由配置
+├── stores/            # Pinia状态管理
+├── styles/            # 全局样式
+├── utils/             # 工具函数
+├── views/             # 页面组件
+├── App.vue            # 根组件
+└── main.js            # 入口文件
+```
+
+## 🌟 核心功能
+
+### 1. 用户系统
+
+- 登录/注册
+- 个人中心
+- 地址管理
+
+### 2. 商品系统
+
+- 商品分类展示
+- 商品搜索与筛选
+- 商品详情页（SKU选择）
+
+### 3. 购物流程
+
+- 购物车管理（本地+服务端同步）
+- 订单创建与结算
+- 模拟支付流程
+
+### 4. 高级特性
+
+- 图片懒加载
+
+## 📚 学习收获
+
+通过本项目实践，深入掌握了：
+
+- Vue3 Composition API 的高级用法
+- Pinia 状态管理的最佳实践
+- 前端性能优化技巧
+- 电商类项目的典型架构设计
+- 组件化开发思维
+
+## 难点/亮点
+
+1. 函数封装：数据业务代码封装成一个独立的函数，内部自动在组件挂载时请求数据。实现了业务逻辑与UI组件解耦，提升代码的可维护性和可读性。
+2. 图片懒加载指令：在电商项目中，商品详情页有大量的图片加载，会影响首屏的加载速度。自定义了v-img-lazy指令实现图片懒加载。
+3. 长页面吸顶：当长页面滚动超过一定阈值时，导航栏会固定在页面顶部。提升用户的体验。
+4. Pinia持久化存储token：避免刷新丢失数据。
+5. 用户通过顶部导航栏切换商品分类时，页面滚动条会停留在上一次的位置（Vue Router 的默认行为），这样导致新内容从页面中间开始显示，用户需手动滚动到顶部，所以通过Vue Router的scrollBehavior统一重置页面位置。
